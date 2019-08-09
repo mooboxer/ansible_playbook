@@ -1,5 +1,5 @@
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/moobox/ansible_playbook)
-![Docker Pulls](https://img.shields.io/docker/pulls/moobox/ansible_playbook)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/mooboxer/ansible_playbook)
+![Docker Pulls](https://img.shields.io/docker/pulls/mooboxer/ansible_playbook)
 
 # Ansible Playbook Docker Image
 
