@@ -1,3 +1,6 @@
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/moobox/ansible_playbook)
+![Docker Pulls](https://img.shields.io/docker/pulls/moobox/ansible_playbook)
+
 # Ansible Playbook Docker Image
 
 Executes ansible-playbook command against an externally mounted set of Ansible playbooks
