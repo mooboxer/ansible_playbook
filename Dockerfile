@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN \
-  apk-install \
+  apk add --no-cache \
     curl \
     openssh-client \
     python \
@@ -14,7 +14,7 @@ RUN \
     py-setuptools \
     py-yaml \
     tar && \
-  pip install --upgrade pip python-keyczar && \
+#  pip install --upgrade pip python-keyczar && \
   rm -rf /var/cache/apk/*
 
 RUN mkdir /etc/ansible/ /ansible
