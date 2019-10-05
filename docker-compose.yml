@@ -1,0 +1,2 @@
+
+#docker run --rm -it -v /home/michi/Projekte/ansible4docker:/ansible/playbooks -v /home/michi/.ansible-vault-key:/root/ansible-vault-key -v ~/.ssh/id_rsa:/root/.ssh/id_rsa -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub mooboxer/ansible_playbook site.yml --vault-password-file /root/ansible-vault-key -i hosts -u root $@

@@ -1,18 +1,20 @@
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/mooboxer/ansible_playbook)
 ![Docker Pulls](https://img.shields.io/docker/pulls/mooboxer/ansible_playbook)
 
+This Docker image is a fork from {philm/ansible_playbook](https://hub.docker.com/r/philm/ansible_playbook). The goal is to povide a current codebase for ansible since the original image didn't get any updates for quite a long time.
+
 # Ansible Playbook Docker Image
 
 Executes ansible-playbook command against an externally mounted set of Ansible playbooks
 
 ```
-docker run --rm -it -v PATH_TO_LOCAL_PLAYBOOKS_DIR:/ansible/playbooks philm/ansible_playbook PLAYBOOK_FILE
+docker run --rm -it -v PATH_TO_LOCAL_PLAYBOOKS_DIR:/ansible/playbooks mooboxer/ansible_playbook PLAYBOOK_FILE
 ```
 
 For example, assuming your project's structure follows [best practices](http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout), the command to run ansible-playbook from the top-level directory would look like:
 
 ```
-docker run --rm -it -v $(pwd):/ansible/playbooks philm/ansible_playbook site.yml
+docker run --rm -it -v $(pwd):/ansible/playbooks mooboxer/ansible_playbook site.yml
 ```
 
 Ansible playbook variables can simply be added after the playbook name.
@@ -26,7 +28,7 @@ docker run --rm -it \
     -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
     -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
     -v $(pwd):/ansible/playbooks \
-    philm/ansible_playbook site.yml
+    mooboxer/ansible_playbook site.yml
 ```
 
 ## Ansible Vault
@@ -36,18 +38,18 @@ If you've encrypted any data using [Ansible Vault](http://docs.ansible.com/ansib
 ```
 docker run --rm -it -v $(pwd):/ansible/playbooks \
     -v ~/.vault_pass.txt:/root/.vault_pass.txt \
-    philm/ansible_playbook site.yml --vault-password-file /root/.vault_pass.txt
+    mooboxer/ansible_playbook site.yml --vault-password-file /root/.vault_pass.txt
 ```                    
 
 Note: the Ansible Vault executable is embedded in this image. To use it, specify a different entrypoint:
 
 ```
-docker run --rm -it -v $(pwd):/ansible/playbooks --entrypoint ansible-vault philm/ansible_playbook encrypt FILENAME
+docker run --rm -it -v $(pwd):/ansible/playbooks --entrypoint ansible-vault mooboxer/ansible_playbook encrypt FILENAME
 ```
 
 ## Testing Playbooks - Ansible Target Container
 
-The [Ansible Target Docker image](https://github.com/philm/ansible_target) is an SSH container optimized for testing Ansible playbooks.
+The [Ansible Target Docker image](https://github.com/mooboxer/ansible_target) is an SSH container optimized for testing Ansible playbooks.
 
 First, define your inventory file.
 
@@ -74,7 +76,7 @@ docker run --rm -it \
     -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
     -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
     -v $(pwd):/ansible/playbooks \
-    philm/ansible_playbook tests.yml -i inventory
+    mooboxer/ansible_playbook tests.yml -i inventory
 ```
 
 Note: the SSH key used above should match the one used to run Ansible Target.

@@ -2,6 +2,7 @@ FROM alpine:latest
 
 RUN \
   apk add --no-cache \
+    sh \
     curl \
     openssh-client \
     python \
@@ -37,4 +38,6 @@ ENV ANSIBLE_SSH_PIPELINING True
 ENV PATH /ansible/bin:$PATH
 ENV PYTHONPATH /ansible/lib
 
-ENTRYPOINT ["ansible-playbook"]
+COPY entrypoint.sh /ansible/
+#ENTRYPOINT ["ansible-playbook"]
+ENTRYPOINT [ "/ansible/entrypoint.sh" ]
