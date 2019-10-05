@@ -40,5 +40,5 @@ ENV PYTHONPATH /ansible/lib
 
 COPY entrypoint.sh /ansible/
 RUN chmod +x /ansible/entrypoint.sh
-#ENTRYPOINT ["ansible-playbook"]
-ENTRYPOINT [ "/ansible/entrypoint.sh" ]
+ENTRYPOINT ["ansible-playbook"]
+#ENTRYPOINT [ "/ansible/entrypoint.sh" ]
