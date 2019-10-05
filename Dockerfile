@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN \
   apk add --no-cache \
-    sh \
+    bash \
     curl \
     openssh-client \
     python \
